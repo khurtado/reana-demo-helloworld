@@ -9,7 +9,7 @@ import errno
 import os
 import sys
 import time
-
+import socket
 
 def hello(inputfile="data/names.txt", outputfile="results/greetings.txt", sleeptime=0.0):
     """Say 'Hello' to given name and store the greeting to a file.
@@ -42,6 +42,7 @@ def hello(inputfile="data/names.txt", outputfile="results/greetings.txt", sleept
 
     # write greetings:
     with open(outputfile, "at") as f:
+        f.write("Working from hostname: {0}\n\n".format(socket.gethostname()))
         for name in names:
             message = "Hello " + name + "!\n"
             for char in message:
